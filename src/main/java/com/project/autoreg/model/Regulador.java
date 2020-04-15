@@ -3,156 +3,176 @@ package com.project.autoreg.model;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.NotEmpty;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity /* gera uma tabela no DB a partir da classe */
 public class Regulador {
 
 
     @Id
-    @NotEmpty
-    private String code; /* Código do equipamento*/
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id; /* id dado pela aplicação*/
 
     @NotEmpty
-    public String region; /* área onde se localizaça o equipamento */
+    private String code; /* código do equipamento  */
+
+    @NotEmpty
+    private String region; /* área onde se localizaça o equipamento */
     
     @NotEmpty
-    public String feeder; /* alimentador */
+    private String feeder; /* alimentador */
 
     @NotEmpty
-    public String bus; /* Barramento do alimentador */
+    private String bus; /* Barramento do alimentador */
 
     @NotEmpty
-    public String model; /* modelo do equipamento */
+    private String model; /* modelo do equipamento */
 
     @NotEmpty
-    public String voltage; /* tensão nominal  */
+    private String voltage; /* tensão nominal  */
 
     @NotEmpty
-    public String eCurrent; /* corrente elétrica nominal */
+    private String eCurrent; /* corrente elétrica nominal */
 
     @NotEmpty
-    public String lVoltage; /* nível de tensão */
+    private String lVoltage; /* nível de tensão */
 
     @NotEmpty
-    public String manufacturer; /* fabricante */
+    private String manufacturer; /* fabricante */
 
     @NotEmpty
-    public String yearManufacture; /* ano de fabricação */
+    private String yearManufacture; /* ano de fabricação */
 
     @NotEmpty
-    public Date dateEnergization; /* data de energização */
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM--yyyy")
+    private Date dateEnergization; /* data de energização */
 
     @NotEmpty
-    public Date lastInspetion; /* data da última inspeção */
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM--yyyy")
+    private Date lastInspetion; /* data da última inspeção */
     
     @NotEmpty
-    public Date lastUpdate; /* data da última atualização */
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM--yyyy")
+    private Date lastUpdate; /* data da última atualização */
 
-    public String getCode() {
-        return code;
-    }
+	public Long getId() {
+		return id;
+	}
 
-    public void setCode(String code) {
-        this.code = code;
-    }
+	public void setId(Long id) {
+		this.id = id;
+	}
 
-    public String getRegion() {
-        return region;
-    }
+	public String getCode() {
+		return code;
+	}
 
-    public void setRegion(String region) {
-        this.region = region;
-    }
+	public void setCode(String code) {
+		this.code = code;
+	}
 
-    public String getFeeder() {
-        return feeder;
-    }
+	public String getRegion() {
+		return region;
+	}
 
-    public void setFeeder(String feeder) {
-        this.feeder = feeder;
-    }
+	public void setRegion(String region) {
+		this.region = region;
+	}
 
-    public String getBus() {
-        return bus;
-    }
+	public String getFeeder() {
+		return feeder;
+	}
 
-    public void setBus(String bus) {
-        this.bus = bus;
-    }
+	public void setFeeder(String feeder) {
+		this.feeder = feeder;
+	}
 
-    public String getModel() {
-        return model;
-    }
+	public String getBus() {
+		return bus;
+	}
 
-    public void setModel(String model) {
-        this.model = model;
-    }
+	public void setBus(String bus) {
+		this.bus = bus;
+	}
 
-    public String getVoltage() {
-        return voltage;
-    }
+	public String getModel() {
+		return model;
+	}
 
-    public void setVoltage(String voltage) {
-        this.voltage = voltage;
-    }
+	public void setModel(String model) {
+		this.model = model;
+	}
 
-    public String geteCurrent() {
-        return eCurrent;
-    }
+	public String getVoltage() {
+		return voltage;
+	}
 
-    public void seteCurrent(String eCurrent) {
-        this.eCurrent = eCurrent;
-    }
+	public void setVoltage(String voltage) {
+		this.voltage = voltage;
+	}
 
-    public String getlVoltage() {
-        return lVoltage;
-    }
+	public String geteCurrent() {
+		return eCurrent;
+	}
 
-    public void setlVoltage(String lVoltage) {
-        this.lVoltage = lVoltage;
-    }
+	public void seteCurrent(String eCurrent) {
+		this.eCurrent = eCurrent;
+	}
 
-    public String getManufacturer() {
-        return manufacturer;
-    }
+	public String getlVoltage() {
+		return lVoltage;
+	}
 
-    public void setManufacturer(String manufacturer) {
-        this.manufacturer = manufacturer;
-    }
+	public void setlVoltage(String lVoltage) {
+		this.lVoltage = lVoltage;
+	}
 
-    public String getYearManufacture() {
-        return yearManufacture;
-    }
+	public String getManufacturer() {
+		return manufacturer;
+	}
 
-    public void setYearManufacture(String yearManufacture) {
-        this.yearManufacture = yearManufacture;
-    }
+	public void setManufacturer(String manufacturer) {
+		this.manufacturer = manufacturer;
+	}
 
-    public Date getDateEnergization() {
-        return dateEnergization;
-    }
+	public String getYearManufacture() {
+		return yearManufacture;
+	}
 
-    public void setDateEnergization(Date dateEnergization) {
-        this.dateEnergization = dateEnergization;
-    }
+	public void setYearManufacture(String yearManufacture) {
+		this.yearManufacture = yearManufacture;
+	}
 
-    public Date getLastInspetion() {
-        return lastInspetion;
-    }
+	public Date getDateEnergization() {
+		return dateEnergization;
+	}
 
-    public void setLastInspetion(Date lastInspetion) {
-        this.lastInspetion = lastInspetion;
-    }
+	public void setDateEnergization(Date dateEnergization) {
+		this.dateEnergization = dateEnergization;
+	}
 
-    public Date getLastUpdate() {
-        return lastUpdate;
-    }
+	public Date getLastInspetion() {
+		return lastInspetion;
+	}
 
-    public void setLastUpdate(Date lastUpdate) {
-        this.lastUpdate = lastUpdate;
-    }
+	public void setLastInspetion(Date lastInspetion) {
+		this.lastInspetion = lastInspetion;
+	}
 
+	public Date getLastUpdate() {
+		return lastUpdate;
+	}
 
+	public void setLastUpdate(Date lastUpdate) {
+		this.lastUpdate = lastUpdate;
+	}
+
+    
 }
+
+
