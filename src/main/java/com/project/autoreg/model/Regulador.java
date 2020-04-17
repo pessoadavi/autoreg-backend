@@ -1,5 +1,6 @@
 package com.project.autoreg.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Entity;
@@ -11,18 +12,19 @@ import javax.validation.constraints.NotEmpty;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity /* gera uma tabela no DB a partir da classe */
-public class Regulador {
+public class Regulador implements Serializable {
 
+	private static final long serialVersionUID = 1L;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
     private Long id; /* id dado pela aplicação*/
 
     @NotEmpty
     private String code; /* código do equipamento  */
 
     @NotEmpty
-    private String region; /* área onde se localizaça o equipamento */
+    private String region; /* área onde se localiza o equipamento */
     
     @NotEmpty
     private String feeder; /* alimentador */
