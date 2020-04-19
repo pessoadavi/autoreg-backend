@@ -21,15 +21,15 @@ public class ReguladorController {
     public String cadastrarRegulador(@Valid Regulador regulador, BindingResult result, RedirectAttributes attributes) {
 
         if (result.hasErrors()) {
-                
+            attributes.addFlashAttribute("mensagem", "Campos obrigatórios devem ser preenchidos.");
         
-        
+            return "redirect:/cadastrarRegulador";
         } 
            
         reguladorService.save(regulador);
         return "redirect:/cadastrarRegulador";
+    }
 
     
-    }
 
 }

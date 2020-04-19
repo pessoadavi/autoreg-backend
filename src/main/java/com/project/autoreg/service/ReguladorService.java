@@ -13,7 +13,7 @@ Regulador findById(Long id); /* achará um regulador pelo seu id*/
 
 Regulador save(Regulador regulador); /* salvará um regulador no banco de dados */
 
-Regulador delete(); /*deletará um regulador do banco de dados */
+Regulador delete(Regulador regulador); /*deletará um regulador do banco de dados */
 
 Regulador findByCode(String code); /* achará um regulador pelo código do equipamento */
 

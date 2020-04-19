@@ -17,7 +17,7 @@ public class Regulador implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.AUTO) /* Gera o valor de id automaticamente*/
     private Long id; /* id dado pela aplicação*/
 
     @NotEmpty

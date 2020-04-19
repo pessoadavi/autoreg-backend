@@ -29,13 +29,14 @@ public class ReguladorServiceImpl implements ReguladorService {
 	}
 
 	@Override
-	public Regulador delete() {
-		return null;
+	public Regulador delete(Regulador regulador) {
+		 reguladorRepository.delete(regulador);
+		 return null;
 	}
 
 	@Override
 	public Regulador findByCode(String code) {
-		return null;
+		return reguladorRepository.findByCode(code);
 	}
 
 }

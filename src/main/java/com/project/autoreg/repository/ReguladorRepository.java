@@ -6,6 +6,8 @@ import org.springframework.data.repository.CrudRepository;
 
 public interface ReguladorRepository extends CrudRepository <Regulador, Long> {
 
+	Regulador findByCode(String code);
+
     
 
 }
