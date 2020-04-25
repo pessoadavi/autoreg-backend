@@ -30,7 +30,7 @@ public class ReguladorServiceImpl implements ReguladorService {
 
 	@Override
 	public Regulador delete(Regulador regulador) {
-		 reguladorRepository.delete(regulador);
+		 this.reguladorRepository.delete(regulador);
 		 return null;
 	}
 

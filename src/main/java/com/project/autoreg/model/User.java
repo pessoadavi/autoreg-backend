@@ -15,7 +15,7 @@ public class User implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO) /* Gera o valor de id automaticamente */
-    private Long userId;
+    private Long id;
 
     private String email;
 
@@ -23,13 +23,12 @@ public class User implements Serializable {
 
     private String password;
 
-    public Long getUserId() {
-        return userId;
+    public Long getId() {
+        return id;
     }
-    
 
-    public void setUserId(Long userId) {
-        this.userId = userId;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getEmail() {
@@ -56,6 +55,7 @@ public class User implements Serializable {
         this.password = password;
     }
 
+    
     
 
     
