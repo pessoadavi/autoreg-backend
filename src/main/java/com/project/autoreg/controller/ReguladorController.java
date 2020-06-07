@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -94,7 +95,7 @@ public class ReguladorController {
     }
 
     @DeleteMapping(value = "/{id}")
-    private  ResponseEntity<Response<String>> deleteRegulador (@PathVariable("id") Long id ) {
+    private  ResponseEntity<Response<String>> deleteRegulador (@PathVariable Long id ) {
         Response<String> response = new Response<String>();
         Optional<Regulador> reguladorOptional = reguladorService.findById(id);
         Regulador regulador = reguladorOptional.get();
@@ -107,9 +108,33 @@ public class ReguladorController {
 
     } 
 
+    @PutMapping(value = "/{id}")
+    private ResponseEntity<Response<Regulador>> editRegulador (@PathVariable Long id, HttpServletRequest request, @RequestBody Regulador regulador, BindingResult result) {
+        Response<Regulador> response = new Response<Regulador>();
 
+        try {
+            validateUpdateRegulador(regulador, result);
+            if(result.hasErrors()) {
+                result.getAllErrors().forEach(error -> response.getErrors().add(error.getDefaultMessage()));
+                return ResponseEntity.badRequest().body(response);
+            }
+            Optional<Regulador> reguladorCurrentOptional = reguladorService.findById(regulador.getId());
+            Regulador reguladorCurrent = reguladorCurrentOptional.get();
+            regulador.s
+        }
+        return null;
+    }
 
-
+    private void validateUpdateRegulador (Regulador regulador, BindingResult result) {
+        if (regulador.getCode() == null) {
+            result.addError(new ObjectError("Regulador", "Código não encontrado"));
+            return;
+        }
+        if (regulador.getId() == null) {
+            result.addError(new ObjectError("Regulador", "Id não encontrado"));
+            return;
+        }
+    }
 
 
 
