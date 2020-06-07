@@ -1,21 +1,25 @@
 package com.project.autoreg.service;
 
-import java.util.List;
+import java.util.Optional;
 
 import com.project.autoreg.model.Regulador;
 
+import org.springframework.data.domain.Page;
+import org.springframework.stereotype.Service;
+
+@Service
 public interface ReguladorService {
 
 
-List<Regulador> findAll(); /* achará um lista (List) de regualdores */
+Page<Regulador> listAll(int page, int count); /* achará um lista (List) de regualdores */
 
-Regulador findById(Long id); /* achará um regulador pelo seu id*/
+Optional<Regulador> findById(Long id); /* achará um regulador pelo seu id*/
 
-Regulador save(Regulador regulador); /* salvará um regulador no banco de dados */
+Regulador createRegulador(Regulador regulador); /* salvará um regulador no banco de dados */
 
-Regulador delete(Regulador regulador); /*deletará um regulador do banco de dados */
+void deleteRegulador(Regulador regulador); /*deletará um regulador do banco de dados */
 
-Regulador findByCode(String code); /* achará um regulador pelo código do equipamento */
+Page<Regulador> findByParameters(String code, String region, String feeder, String bus, int pages, int count); /* achará um regulador pelo código do equipamento */
 
 
 
