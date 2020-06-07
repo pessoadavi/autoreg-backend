@@ -11,7 +11,6 @@ import com.project.autoreg.service.ReguladorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
-import org.springframework.remoting.rmi.RmiRegistryFactoryBean;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -120,9 +119,24 @@ public class ReguladorController {
             }
             Optional<Regulador> reguladorCurrentOptional = reguladorService.findById(regulador.getId());
             Regulador reguladorCurrent = reguladorCurrentOptional.get();
-            regulador.s
+            regulador.setCode(reguladorCurrent.getCode());
+            regulador.setRegion(reguladorCurrent.getRegion());
+            regulador.setFeeder(reguladorCurrent.getFeeder());
+            regulador.setBus(reguladorCurrent.getBus());
+            regulador.setModel(reguladorCurrent.getModel());
+            regulador.setVoltage(reguladorCurrent.getVoltage());
+            regulador.seteCurrent(reguladorCurrent.geteCurrent());
+            regulador.setVoltage(reguladorCurrent.getlVoltage());
+            regulador.setManufacturer(reguladorCurrent.getManufacturer());
+            regulador.setYearManufacture(reguladorCurrent.getYearManufacture());
+            Regulador reguladorPersisted = (Regulador) reguladorService.createRegulador(regulador);
+            response.setData(reguladorPersisted);
+        } catch (Exception exception) {
+            response.getErrors().add(exception.getMessage());
+            return ResponseEntity.badRequest().body(response);
         }
-        return null;
+            
+        return ResponseEntity.ok(response);
     }
 
     private void validateUpdateRegulador (Regulador regulador, BindingResult result) {
