@@ -93,9 +93,10 @@ public class ReguladorController {
         }
     }
 
+    /* Método para deletar um regulador */
     @DeleteMapping(value = "/{id}")
-    private  ResponseEntity<Response<String>> deleteRegulador (@PathVariable Long id ) {
-        Response<String> response = new Response<String>();
+    private  ResponseEntity<Response<Long>> deleteRegulador (@PathVariable Long id ) {
+        Response<Long> response = new Response<Long>();
         Optional<Regulador> reguladorOptional = reguladorService.findById(id);
         Regulador regulador = reguladorOptional.get();
         if(regulador == null) {
@@ -103,10 +104,11 @@ public class ReguladorController {
             return ResponseEntity.badRequest().body(response);
         }
         reguladorService.deleteRegulador(regulador);
-        return ResponseEntity.ok(new Response<String>());
+        return ResponseEntity.ok(new Response<Long>());
 
     } 
 
+    /* Método para editar os dados de um regulador */
     @PutMapping(value = "/{id}")
     private ResponseEntity<Response<Regulador>> editRegulador (@PathVariable Long id, HttpServletRequest request, @RequestBody Regulador regulador, BindingResult result) {
         Response<Regulador> response = new Response<Regulador>();

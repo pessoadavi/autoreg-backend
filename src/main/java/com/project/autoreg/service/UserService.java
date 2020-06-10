@@ -1,19 +1,22 @@
 package com.project.autoreg.service;
 
-import java.util.List;
+
+import java.util.Optional;
 
 import com.project.autoreg.model.User;
 
+import org.springframework.data.domain.Page;
+
 public interface UserService {
 
-    List<User> findAll(); /* Método para lsitar todos os usuários cadastrados */
+    Page<User> listAll(int page, int count); /* Método para lsitar todos os usuários cadastrados */
 
     User findByEmail(String email); /* Método para procurar um usuário pelo email  */
 
-    User delete(User user); /* Método para deletar um usuário */
+    User deleteUser(User user); /* Método para deletar um usuário */
 
-    User save(User user); /* Método para salvar um novo usuário */
+    User createUser(User user); /* Método para salvar um novo usuário */
 
-    User findById(Long id); /* Método para achar usuário pelo id */
+    Optional<User> findById(Long id); /* Método para achar usuário pelo id */
 
 }

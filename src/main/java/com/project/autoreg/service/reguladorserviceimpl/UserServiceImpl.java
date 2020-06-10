@@ -1,12 +1,15 @@
 package com.project.autoreg.service.reguladorserviceimpl;
 
 import java.util.List;
+import java.util.Optional;
 
 import com.project.autoreg.model.User;
 import com.project.autoreg.repository.UserRepository;
 import com.project.autoreg.service.UserService;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 
 public class UserServiceImpl implements UserService {
 
@@ -19,24 +22,25 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User delete(User user) {
+    public User deleteUser(User user) {
         userRepository.delete(user);
         return null;
     }
 
     @Override
-    public User save(User user) {
+    public User createUser(User user) {
         return userRepository.save(user);
     }
 
     @Override
-    public User findById(Long id) {
-        return userRepository.findById(id).get();
+    public Optional<User> findById(Long id) {
+        return userRepository.findById(id);
     }
 
     @Override
-    public List<User> findAll() {
-        return (List<User>) userRepository.findAll();
+    public Page<User> listAll(int page, int count) {
+        PageRequest pages = PageRequest.of(page, count);
+        return this.userRepository.findAll(pages);
     }
 
 }
