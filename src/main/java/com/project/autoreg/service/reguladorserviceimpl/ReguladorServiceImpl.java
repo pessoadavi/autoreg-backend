@@ -9,7 +9,9 @@ import com.project.autoreg.service.ReguladorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.stereotype.Service;
 
+@Service
 public class ReguladorServiceImpl implements ReguladorService {
 
 	@Autowired 												/* Ponto de injeção do repositório */
