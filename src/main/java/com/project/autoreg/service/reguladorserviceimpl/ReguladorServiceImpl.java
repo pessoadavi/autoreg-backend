@@ -9,6 +9,7 @@ import com.project.autoreg.service.ReguladorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -43,10 +44,17 @@ public class ReguladorServiceImpl implements ReguladorService {
 	}
 
 	@Override
-	public Page<Regulador> findByParameters(String code, String region, String feeder, String bus, int pages,
-			int count) {
-		return this.reguladorRepository.findByCodeIgnoreCaseContaingAndRegionIgnoreCaseContaingAndFeederIgnoreCaseContaingAndBusIgnoreCaseContaingAndOrderByCodeDesc(code, region, feeder, bus, pages);
+	public Page<Regulador> findByParameters(String code, String region, String feeder, String bus, int page, int count) {
+ 
+	Pageable pageable = PageRequest.of(page, count);
+	return this.reguladorRepository.findByCodeContainingAndRegionContainingAndFeederContainingAndBusContainingOrderByCodeDesc(code, region, feeder, bus, pageable);
 	}
+
+	//@Override
+	//public Page<Regulador> findByParameters(String code, String region, String feeder, String bus, int page,
+	//		int count) {
+	//	return this.reguladorRepository.findByCodeIgnoreCaseContaingAndRegionIgnoreCaseContaingAndFeederIgnoreCaseContaingAndBusIgnoreCaseContaingAndOrderByCodeDesc(code, region, feeder, bus, page);
+	//}
 
 
 	

@@ -46,7 +46,7 @@ public class ReguladorController {
     /* Metodo para filtrar um equipamento por algum parametro */
     @GetMapping(value = "/{page}/{count}/{code}/{region}/{feeder}/{bus}")
     public ResponseEntity<Response<Page<Regulador>>>findByParameters(HttpServletRequest request,
-                                                                    @PathVariable int pages,
+                                                                    @PathVariable int page,
                                                                     @PathVariable int count, 
                                                                     @PathVariable String code,
                                                                     @PathVariable String region, 
@@ -60,7 +60,7 @@ public class ReguladorController {
     
     Response<Page<Regulador>> response = new Response<Page<Regulador>>();
     Page<Regulador> regulador = null;
-    regulador = reguladorService.findByParameters(code, region, feeder, bus, pages, count);
+    regulador = reguladorService.findByParameters(code, region, feeder, bus, page, count);
     response.setData(regulador);
     return ResponseEntity.ok(response);
     }

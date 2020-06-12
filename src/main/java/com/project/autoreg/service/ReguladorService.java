@@ -20,7 +20,7 @@ Regulador createRegulador(Regulador regulador); /* salvará um regulador no banc
 
 void deleteRegulador(Regulador regulador); /*deletará um regulador do banco de dados */
 
-Page<Regulador> findByParameters(String code, String region, String feeder, String bus, int pages, int count); /* achará um regulador pelo código do equipamento */
+Page<Regulador> findByParameters(String code, String region, String feeder, String bus, int page, int count); /* achará um regulador pelo código do equipamento */
 
 
 
