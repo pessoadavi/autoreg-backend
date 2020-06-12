@@ -1,12 +1,13 @@
 package com.project.autoreg.service;
 
-
 import java.util.Optional;
 
 import com.project.autoreg.model.User;
 
 import org.springframework.data.domain.Page;
+import org.springframework.stereotype.Service;
 
+@Service
 public interface UserService {
 
     Page<User> listAll(int page, int count); /* Método para lsitar todos os usuários cadastrados */

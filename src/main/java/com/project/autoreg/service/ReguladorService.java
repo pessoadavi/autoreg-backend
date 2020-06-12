@@ -10,7 +10,8 @@ import org.springframework.stereotype.Service;
 @Service
 public interface ReguladorService {
 
-
+    
+    
 Page<Regulador> listAll(int page, int count); /* achará um lista (List) de regualdores */
 
 Optional<Regulador> findById(Long id); /* achará um regulador pelo seu id*/
