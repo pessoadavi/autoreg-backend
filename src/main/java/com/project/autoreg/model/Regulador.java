@@ -11,6 +11,9 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonFormat.Shape;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Table
 @Entity /* gera uma tabela no DB a partir da classe */
@@ -51,18 +54,27 @@ public class Regulador implements Serializable {
 
     @NotEmpty
     private String yearManufacture; /* ano de fabricação */
-
-    @NotEmpty
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM--yyyy")
-    private Date dateEnergization; /* data de energização */
-
-    @NotEmpty
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM--yyyy")
-    private Date lastInspetion; /* data da última inspeção */
-    
-    @NotEmpty
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM--yyyy")
-    private Date lastUpdate; /* data da última atualização */
+/*
+    //@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
+	@NotEmpty
+	//@JsonFormat(pattern = "dd/MM/yyyy", shape = Shape.STRING)
+	//@DateTimeFormat(pattern = "dd/MM/yyyy")
+	//@JsonFormat(pattern = "dd/MM/yyyy")
+	private Date dateEnergization; /* data de energização */
+/*
+    //@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
+	@NotEmpty
+	//@JsonFormat(pattern = "dd/MM/yyyy", shape = Shape.STRING)
+	//@JsonFormat(pattern = "dd/MM/yyyy")
+	@DateTimeFormat(pattern = "dd/MM/yyyy")
+	private Date lastInspetion; /* data da última inspeção */
+ /*   
+	//@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
+	@NotEmpty
+	//@JsonFormat(pattern = "dd/MM/yyyy", shape = Shape.STRING)
+	@JsonFormat(pattern = "dd/MM/yyyy")
+	//@DateTimeFormat(pattern = "dd/MM/yyyy")
+	private Date lastUpdate; /* data da última atualização */
 
 	public Long getId() {
 		return id;
@@ -151,7 +163,7 @@ public class Regulador implements Serializable {
 	public void setYearManufacture(String yearManufacture) {
 		this.yearManufacture = yearManufacture;
 	}
-
+/*
 	public Date getDateEnergization() {
 		return dateEnergization;
 	}
@@ -176,7 +188,7 @@ public class Regulador implements Serializable {
 		this.lastUpdate = lastUpdate;
 	}
 
-    
+*/    
 }
 
 

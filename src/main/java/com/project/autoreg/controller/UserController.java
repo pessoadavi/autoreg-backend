@@ -87,6 +87,7 @@ public class UserController {
         }
     }
 
+    /* Método para atualizar um novo usuário */
     @PutMapping(value = "/{id}")
     private ResponseEntity<Response<User>> editUser (@PathVariable Long id, HttpServletRequest request, @RequestBody User user, BindingResult result) {
         Response<User> response = new Response<User>();
@@ -113,6 +114,7 @@ public class UserController {
         return ResponseEntity.ok(response);
     }
 
+    /* Método auxiliar para validar se o e-mail de cadastro está vazio */
     private void validateUpdateUser (User user, BindingResult result) {
         if (user.getId() == null) {
             result.addError(new ObjectError("user", "Id não encontrado"));
