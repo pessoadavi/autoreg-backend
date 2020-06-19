@@ -1,5 +1,6 @@
 package com.project.autoreg.controller;
 
+import java.util.List;
 import java.util.Optional;
 
 import javax.servlet.http.HttpServletRequest;
@@ -43,6 +44,16 @@ public class ReguladorController {
         return ResponseEntity.ok(response);
     }
 
+    /* teste */
+    @GetMapping()
+    public ResponseEntity<Response<List<Regulador>>>listAll2(HttpServletRequest request) {
+        Response<List<Regulador>> response = new Response<List<Regulador>>();
+        List<Regulador> regulador = null;
+        regulador = reguladorService.findAll2();
+        response.setData(regulador);
+        return ResponseEntity.ok(response);
+    }
+
     /* Metodo para filtrar um equipamento por algum parametro */
     @GetMapping(value = "/{page}/{count}/{code}/{region}/{feeder}/{bus}")
     public ResponseEntity<Response<Page<Regulador>>>findByParameters(HttpServletRequest request,
@@ -80,7 +91,7 @@ public class ReguladorController {
         
         }   catch (Exception exception) {
                 response.getErrors().add(exception.getMessage());
-                return ResponseEntity.badRequest().body(response);
+                return ResponseEntity.badRequest().body(response); 
             }   
 
     return ResponseEntity.ok(response);

@@ -49,10 +49,8 @@ public class Regulador implements Serializable {
     @NotEmpty
     private String lVoltage; /* nível de tensão */
 
-    @NotEmpty
     private String manufacturer; /* fabricante */
 
-    @NotEmpty
     private String yearManufacture; /* ano de fabricação */
 /*
     //@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")

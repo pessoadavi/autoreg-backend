@@ -1,5 +1,6 @@
 package com.project.autoreg.service.reguladorserviceimpl;
 
+import java.util.List;
 import java.util.Optional;
 
 import com.project.autoreg.model.Regulador;
@@ -15,10 +16,8 @@ import org.springframework.stereotype.Service;
 @Service
 public class ReguladorServiceImpl implements ReguladorService {
 
-	@Autowired 												/* Ponto de injeção do repositório */
+	@Autowired /* Ponto de injeção do repositório */
 	ReguladorRepository reguladorRepository;
-
-	
 
 	@Override
 	public Optional<Regulador> findById(Long id) {
@@ -32,10 +31,9 @@ public class ReguladorServiceImpl implements ReguladorService {
 
 	@Override
 	public void deleteRegulador(Regulador regulador) {
-		 this.reguladorRepository.delete(regulador);
-		
-	}
+		this.reguladorRepository.delete(regulador);
 
+	}
 
 	@Override
 	public Page<Regulador> listAll(int page, int count) {
@@ -43,23 +41,21 @@ public class ReguladorServiceImpl implements ReguladorService {
 		return this.reguladorRepository.findAll(pages);
 	}
 
+	/* teste */
 	@Override
-	public Page<Regulador> findByParameters(String code, String region, String feeder, String bus, int page, int count) {
- 
-	Pageable pageable = PageRequest.of(page, count);
-	return this.reguladorRepository.findByCodeContainingAndRegionContainingAndFeederContainingAndBusContainingOrderByCodeDesc(code, region, feeder, bus, pageable);
+	public List<Regulador> findAll2() {
+		return this.reguladorRepository.findAll();
 	}
 
-	//@Override
-	//public Page<Regulador> findByParameters(String code, String region, String feeder, String bus, int page,
-	//		int count) {
-	//	return this.reguladorRepository.findByCodeIgnoreCaseContaingAndRegionIgnoreCaseContaingAndFeederIgnoreCaseContaingAndBusIgnoreCaseContaingAndOrderByCodeDesc(code, region, feeder, bus, page);
-	//}
+	@Override
+	public Page<Regulador> findByParameters(String code, String region, String feeder, String bus, int page,
+			int count) {
 
-
-	
-
-
+		Pageable pageable = PageRequest.of(page, count);
+		return this.reguladorRepository
+				.findByCodeContainingAndRegionContainingAndFeederContainingAndBusContainingOrderByCodeDesc(code, region,
+						feeder, bus, pageable);
+	}
 
 	
 	
