@@ -44,6 +44,19 @@ public class ReguladorController {
         return ResponseEntity.ok(response);
     }
 
+    /* Método para encontrar um regulador pelo seu id */
+    @GetMapping(value = "/{id}")
+    public ResponseEntity<Response<Regulador>>findById(@PathVariable Long id) {
+
+        Response<Regulador> response = new Response<Regulador>();
+        Regulador regulador = reguladorService.findById(id).get();
+        if(regulador == null) {
+            response.getErrors().add("Regulador não encontrado");
+            return ResponseEntity.badRequest().body(response);
+        }
+        return ResponseEntity.ok(response);
+    } 
+
     /* teste */
     @GetMapping()
     public ResponseEntity<Response<List<Regulador>>>listAll2(HttpServletRequest request) {
