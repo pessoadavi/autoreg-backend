@@ -24,8 +24,8 @@ void deleteRegulador(Regulador regulador); /*deletará um regulador do banco de 
 
 Page<Regulador> findByParameters(String code, String region, String feeder, String bus, int page, int count); /* achará um regulador pelo código do equipamento */
 
-/* teste */
-List<Regulador> findAll2(); 
+/* teste 
+List<Regulador> findAll2(); */
 
 
 }

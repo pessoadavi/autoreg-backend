@@ -41,11 +41,11 @@ public class ReguladorServiceImpl implements ReguladorService {
 		return this.reguladorRepository.findAll(pages);
 	}
 
-	/* teste */
+	/* teste 
 	@Override
 	public List<Regulador> findAll2() {
 		return this.reguladorRepository.findAll();
-	}
+	}*/
 
 	@Override
 	public Page<Regulador> findByParameters(String code, String region, String feeder, String bus, int page,

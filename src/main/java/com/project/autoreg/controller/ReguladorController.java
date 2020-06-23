@@ -57,7 +57,7 @@ public class ReguladorController {
         return ResponseEntity.ok(response);
     } 
 
-    /* teste */
+    /* teste 
     @GetMapping()
     public ResponseEntity<Response<List<Regulador>>>listAll2(HttpServletRequest request) {
         Response<List<Regulador>> response = new Response<List<Regulador>>();
@@ -65,7 +65,7 @@ public class ReguladorController {
         regulador = reguladorService.findAll2();
         response.setData(regulador);
         return ResponseEntity.ok(response);
-    }
+    }*/
 
     /* Metodo para filtrar um equipamento por algum parametro */
     @GetMapping(value = "/{page}/{count}/{code}/{region}/{feeder}/{bus}")
