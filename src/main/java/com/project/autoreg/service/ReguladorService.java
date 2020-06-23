@@ -1,6 +1,5 @@
 package com.project.autoreg.service;
 
-import java.util.List;
 import java.util.Optional;
 
 import com.project.autoreg.model.Regulador;
