@@ -54,6 +54,7 @@ public class ReguladorController {
             response.getErrors().add("Regulador não encontrado");
             return ResponseEntity.badRequest().body(response);
         }
+        response.setData(regulador);
         return ResponseEntity.ok(response);
     } 
 
