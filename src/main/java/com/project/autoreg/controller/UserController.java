@@ -29,7 +29,7 @@ import org.springframework.web.bind.annotation.RestController;
 @CrossOrigin(origins = "*")
 public class UserController {
 
-    /* Injeção de dependencia do reguladorService */
+    /* Injeção de dependencia do userService */
     @Autowired                                      
     private UserService userService;
 
@@ -105,8 +105,8 @@ public class UserController {
             user.setLogin(userCurrent.getLogin());
             user.setPermission(userCurrent.getPermission());
 
-            User reguladorPersisted = (User) userService.createUser(user);
-            response.setData(reguladorPersisted);
+            User userPersisted = (User) userService.createUser(user);
+            response.setData(userPersisted);
         } catch (Exception exception) {
             response.getErrors().add(exception.getMessage());
             return ResponseEntity.badRequest().body(response);
