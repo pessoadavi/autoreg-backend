@@ -14,7 +14,7 @@ public interface UserService {
 
     User findByEmail(String email); /* Método para procurar um usuário pelo email  */
 
-    User deleteUser(User user); /* Método para deletar um usuário */
+    void deleteUser(User user); /* Método para deletar um usuário */
 
     User createUser(User user); /* Método para salvar um novo usuário */
 
