@@ -1,6 +1,5 @@
 package com.project.autoreg.controller;
 
-import java.util.List;
 import java.util.Optional;
 
 import javax.servlet.http.HttpServletRequest;

@@ -43,6 +43,20 @@ public class UserController {
         response.setData(user);
         return ResponseEntity.ok(response);
     }
+
+    /* Método para encontrar um usuário pelo id */
+    @GetMapping(value="/{id}")
+    public ResponseEntity<Response<User>>findById(@PathVariable Long id) {
+        Response<User> response = new Response<User>();
+        User user = userService.findById(id).get();
+        if (user == null) {
+            response.getErrors().add("Usuário não encontrado");
+            ResponseEntity.badRequest().body(response);
+        }
+        response.setData(user);
+        return ResponseEntity.ok(response);
+    }
+
     /* Método para deletar um usuário */
     @DeleteMapping(value = "{/id}")
     public ResponseEntity<Response<Long>> deleteUser(@PathVariable Long id){
