@@ -95,7 +95,7 @@ public class UserController {
     return ResponseEntity.ok(response);
 }
     /* Método auxiliar para validar se o e-mail de cadastro está vazio */
-    public void validateCreateUser(User user, BindingResult result) {
+    private void validateCreateUser(User user, BindingResult result) {
         if(user.getEmail() == null) {
             result.addError(new ObjectError("User", "E-mail não informado"));
             return;
