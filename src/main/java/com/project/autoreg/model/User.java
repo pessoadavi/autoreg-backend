@@ -25,6 +25,8 @@ public class User implements Serializable {
 
     private String password;
 
+    private String Permission;
+
     public Long getId() {
         return id;
     }
@@ -55,6 +57,14 @@ public class User implements Serializable {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getPermission() {
+        return Permission;
+    }
+
+    public void setPermission(String permission) {
+        Permission = permission;
     }
 
     

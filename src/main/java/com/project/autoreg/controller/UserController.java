@@ -103,6 +103,7 @@ public class UserController {
             user.setEmail(userCurrent.getEmail());
             user.setPassword(userCurrent.getPassword());
             user.setLogin(userCurrent.getLogin());
+            user.setPermission(userCurrent.getPermission());
 
             User reguladorPersisted = (User) userService.createUser(user);
             response.setData(reguladorPersisted);
