@@ -58,7 +58,7 @@ public class UserController {
     }
 
     /* Método para deletar um usuário */
-    @DeleteMapping(value = "{/id}")
+    @DeleteMapping(value = "/{id}")
     public ResponseEntity<Response<Long>> deleteUser(@PathVariable Long id){
         Response<Long> response = new Response<Long>();
         Optional<User> userOptional = userService.findById(id);
