@@ -9,6 +9,7 @@ import com.project.autoreg.response.Response;
 import com.project.autoreg.service.ReguladorService;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
@@ -99,10 +100,15 @@ public class ReguladorController {
                 result.getAllErrors().forEach(error -> response.getErrors().add(error.getDefaultMessage()));
                 return ResponseEntity.badRequest().body(response);
             }
-            regulador = reguladorService.createRegulador(regulador);
-            response.setData(regulador);
+            Regulador reguladorPersisted = (Regulador) reguladorService.createRegulador(regulador);
+            //regulador = reguladorService.createRegulador(regulador);
+            response.setData(reguladorPersisted);
         
-        }   catch (Exception exception) {
+        } catch(DuplicateKeyException duplicateKeyException)   {
+            response.getErrors().add("E-mail já registrado");
+            return ResponseEntity.badRequest().body(response);
+
+        } catch (Exception exception) {
                 response.getErrors().add(exception.getMessage());
                 return ResponseEntity.badRequest().body(response); 
             }   

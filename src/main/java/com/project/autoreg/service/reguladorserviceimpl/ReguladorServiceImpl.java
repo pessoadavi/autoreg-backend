@@ -31,7 +31,6 @@ public class ReguladorServiceImpl implements ReguladorService {
 	@Override
 	public void deleteRegulador(Regulador regulador) {
 		this.reguladorRepository.delete(regulador);
-
 	}
 
 	@Override

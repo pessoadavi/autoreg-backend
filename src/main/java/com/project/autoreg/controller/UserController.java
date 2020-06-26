@@ -87,6 +87,7 @@ public class UserController {
         } catch (DuplicateKeyException duplicateKeyException) {
             response.getErrors().add("E-mail já registrado");
             return ResponseEntity.badRequest().body(response);
+            
         } catch (Exception exception) {
             response.getErrors().add(exception.getMessage());
             return ResponseEntity.badRequest().body(response);
@@ -94,7 +95,7 @@ public class UserController {
     return ResponseEntity.ok(response);
 }
     /* Método auxiliar para validar se o e-mail de cadastro está vazio */
-    private void validateCreateUser(User user, BindingResult result) {
+    public void validateCreateUser(User user, BindingResult result) {
         if(user.getEmail() == null) {
             result.addError(new ObjectError("User", "E-mail não informado"));
             return;
@@ -103,7 +104,7 @@ public class UserController {
 
     /* Método para atualizar um novo usuário */
     @PutMapping(value = "/{id}")
-    private ResponseEntity<Response<User>> editUser (@PathVariable Long id, HttpServletRequest request, @RequestBody User user, BindingResult result) {
+    public ResponseEntity<Response<User>> editUser (@PathVariable Long id, HttpServletRequest request, @RequestBody User user, BindingResult result) {
         Response<User> response = new Response<User>();
 
         try {

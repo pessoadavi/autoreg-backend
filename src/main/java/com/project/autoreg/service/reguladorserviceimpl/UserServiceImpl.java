@@ -37,12 +37,6 @@ public class UserServiceImpl implements UserService {
         return userRepository.findByEmail(email);
     }
 
-    
-
-    
-
-    
-
     @Override
     public Page<User> listAll(int page, int count) {
         PageRequest pages = PageRequest.of(page, count);
