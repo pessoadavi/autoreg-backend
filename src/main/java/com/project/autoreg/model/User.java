@@ -8,6 +8,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import com.project.autoreg.security.enums.ProfileEnum;
+
+
 @Table
 @Entity
 public class User implements Serializable {
@@ -21,11 +24,9 @@ public class User implements Serializable {
 
     private String email;
 
-    private String login;
-
     private String password;
 
-    private String Permission;
+    private ProfileEnum profile;
 
     public Long getId() {
         return id;
@@ -43,14 +44,6 @@ public class User implements Serializable {
         this.email = email;
     }
 
-    public String getLogin() {
-        return login;
-    }
-
-    public void setLogin(String login) {
-        this.login = login;
-    }
-
     public String getPassword() {
         return password;
     }
@@ -59,18 +52,13 @@ public class User implements Serializable {
         this.password = password;
     }
 
-    public String getPermission() {
-        return Permission;
+    public ProfileEnum getProfile() {
+        return profile;
     }
 
-    public void setPermission(String permission) {
-        Permission = permission;
+    public void setProfile(ProfileEnum profile) {
+        this.profile = profile;
     }
 
-    
-    
-
-    
-
-
+   
 }

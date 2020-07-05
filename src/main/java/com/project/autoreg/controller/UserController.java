@@ -117,8 +117,7 @@ public class UserController {
             User userCurrent = userCurrentOptional.get();
             user.setEmail(userCurrent.getEmail());
             user.setPassword(userCurrent.getPassword());
-            user.setLogin(userCurrent.getLogin());
-            user.setPermission(userCurrent.getPermission());
+            user.setProfile(userCurrent.getProfile());
 
             User userPersisted = (User) userService.createUser(user);
             response.setData(userPersisted);
