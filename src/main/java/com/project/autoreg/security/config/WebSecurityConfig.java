@@ -45,19 +45,20 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Bean
 	public JwtAuthenticationTokenFilter authenticationTokenFilterBean() throws Exception {
 		return new JwtAuthenticationTokenFilter();
-	}
-	
-	@Bean
+    }
+
+    @Bean
 	public AuthenticationManager customAuthenticationManager() throws Exception {
-	  return authenticationManager();
-	}
-	
+	return authenticationManager();
+    } 
+    
 	@Override
     protected void configure(HttpSecurity httpSecurity) throws Exception {
         httpSecurity.csrf().disable()
                 .exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
                 .authorizeRequests()
+                .antMatchers(HttpMethod.POST,"/usuarios/**").permitAll()
                 .antMatchers(
                         HttpMethod.GET,
                         "/",
@@ -67,13 +68,17 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                         "/**/*.css",
                         "/**/*.js"
                 ).permitAll()
-                .antMatchers("/usuarios/**").permitAll()
+                .antMatchers("/usuarios/auth/**").permitAll()
                 .anyRequest().authenticated();
         httpSecurity.addFilterBefore(authenticationTokenFilterBean(), UsernamePasswordAuthenticationFilter.class);
         httpSecurity.headers().cacheControl();
     }
 
-
-
-
+    
 }
+
+/*  @Bean
+	public AuthenticationManager customAuthenticationManager() throws Exception {
+	return authenticationManager();
+    } 
+*/

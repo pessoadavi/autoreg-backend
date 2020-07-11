@@ -13,8 +13,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 public class JwtUserFactory {
     private JwtUserFactory() {
     }
-
-    // Método para criar um JwtUser com base nos dados do usuário //
+// Método para criar um JwtUser com base nos dados do usuário //
     public static JwtUser create(User user) {
         return new JwtUser(
                 user.getId(),
@@ -23,7 +22,6 @@ public class JwtUserFactory {
                 mapToGrantedAuthorities(user.getProfile())
         );
     }
-
     // Mpetodo que converte o perfil do usuário par o formato utilizado no spring security //
     private static List<GrantedAuthority> mapToGrantedAuthorities(ProfileEnum profileEnum) {
             List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>(); 
