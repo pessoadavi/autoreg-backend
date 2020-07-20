@@ -18,6 +18,7 @@ public class AutoregApplication {
 		SpringApplication.run(AutoregApplication.class, args);
 	}
 
+    /*
 	@Bean
     CommandLineRunner init(UserRepository userRepository, PasswordEncoder passwordEncoder) {
         return args -> {
@@ -37,5 +38,5 @@ public class AutoregApplication {
             userRepository.save(admin);
         }
     }
-
+    */
 }
