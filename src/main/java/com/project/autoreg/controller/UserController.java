@@ -118,7 +118,6 @@ public class UserController {
     //@PreAuthorize("hasAnyRole('ADMIN')")
     public ResponseEntity<Response<User>> editUser (@PathVariable Long id, HttpServletRequest request, @RequestBody User user, BindingResult result) {
         Response<User> response = new Response<User>();
-
         try {
             validateUpdateUser(user, result);
             if(result.hasErrors()) {
@@ -148,7 +147,7 @@ public class UserController {
             return;
         }
         if (user.getEmail() == null) {
-            result.addError(new ObjectError("user", "Id não encontrado"));
+            result.addError(new ObjectError("user", "E-mail não encontrado"));
             return;
         }
     }
