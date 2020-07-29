@@ -37,6 +37,6 @@ public class AutoregApplication {
         if (find == null) {
             userRepository.save(admin);
         }
-    }
-    */
+    }*/
+    
 }

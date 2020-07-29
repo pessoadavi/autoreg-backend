@@ -12,7 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
@@ -41,7 +40,6 @@ public class UserController {
 
     /* Método para mostrar todos os usuários */
     @GetMapping(value = "/{page}/{count}")
-    //@PreAuthorize("hasAnyRole('ADMIN')")
     public ResponseEntity<Response<Page<User>>> listAll(HttpServletRequest request, @PathVariable int page, @PathVariable int count) {
         Response<Page<User>> response = new Response<Page<User>>();
 
@@ -53,7 +51,6 @@ public class UserController {
 
     /* Método para encontrar um usuário pelo id */
     @GetMapping(value="/{id}")
-    //@PreAuthorize("hasAnyRole('ADMIN')")
     public ResponseEntity<Response<User>>findById(@PathVariable Long id) {
         Response<User> response = new Response<User>();
         User user = userService.findById(id).get();
@@ -67,7 +64,6 @@ public class UserController {
 
     /* Método para deletar um usuário */
     @DeleteMapping(value = "/{id}")
-    //@PreAuthorize("hasAnyRole('ADMIN')")
     public ResponseEntity<Response<Long>> deleteUser(@PathVariable Long id){
         Response<Long> response = new Response<Long>();
         Optional<User> userOptional = userService.findById(id);
@@ -83,7 +79,6 @@ public class UserController {
 
     /* Método para criar um novo usuário */
     @PostMapping
-    //@PreAuthorize("hasAnyRole('ADMIN')")
     public ResponseEntity<Response<User>> createUser(HttpServletRequest request,@RequestBody User user, BindingResult result) {
         Response<User> response = new Response<User>();
         try {
@@ -115,7 +110,6 @@ public class UserController {
 
     /* Método para atualizar um novo usuário */
     @PutMapping(value = "/{id}")
-    //@PreAuthorize("hasAnyRole('ADMIN')")
     public ResponseEntity<Response<User>> editUser (@PathVariable Long id, HttpServletRequest request, @RequestBody User user, BindingResult result) {
         Response<User> response = new Response<User>();
         try {
@@ -124,11 +118,17 @@ public class UserController {
                 result.getAllErrors().forEach(error -> response.getErrors().add(error.getDefaultMessage()));
                 return ResponseEntity.badRequest().body(response);
             }
-            Optional<User> userCurrentOptional = userService.findById(user.getId());
-            User userCurrent = userCurrentOptional.get();
-            user.setEmail(userCurrent.getEmail());
-            user.setPassword(passEnconder.encode(userCurrent.getPassword()));
-            user.setProfile(userCurrent.getProfile());
+
+            user.setEmail(user.getEmail());
+            user.setPassword(passEnconder.encode(user.getPassword()));
+            user.setProfile(user.getProfile());
+
+            //Optional<User> userCurrentOptional = userService.findById(user.getId());
+            //User userCurrent = userCurrentOptional.get();
+            //user.setEmail(userCurrent.getEmail());
+            //user.setPassword(userCurrent.getPassword());
+            //user.setPassword(passEnconder.encode(userCurrent.getPassword()));
+            //user.setProfile(userCurrent.getProfile());
 
             User userPersisted = (User) userService.createUser(user);
             response.setData(userPersisted);
@@ -139,6 +139,8 @@ public class UserController {
             
         return ResponseEntity.ok(response);
     }
+
+
 
     /* Método auxiliar para validar se o e-mail de cadastro está vazio */
     private void validateUpdateUser (User user, BindingResult result) {

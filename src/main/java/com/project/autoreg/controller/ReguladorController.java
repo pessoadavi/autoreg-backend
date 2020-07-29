@@ -149,18 +149,19 @@ public class ReguladorController {
                 result.getAllErrors().forEach(error -> response.getErrors().add(error.getDefaultMessage()));
                 return ResponseEntity.badRequest().body(response);
             }
-            Optional<Regulador> reguladorCurrentOptional = reguladorService.findById(regulador.getId());
-            Regulador reguladorCurrent = reguladorCurrentOptional.get();
-            regulador.setCode(reguladorCurrent.getCode());
-            regulador.setRegion(reguladorCurrent.getRegion());
-            regulador.setFeeder(reguladorCurrent.getFeeder());
-            regulador.setBus(reguladorCurrent.getBus());
-            regulador.setModel(reguladorCurrent.getModel());
-            regulador.setVoltage(reguladorCurrent.getVoltage());
-            regulador.seteCurrent(reguladorCurrent.geteCurrent());
-            regulador.setVoltage(reguladorCurrent.getlVoltage());
-            regulador.setManufacturer(reguladorCurrent.getManufacturer());
-            regulador.setYearManufacture(reguladorCurrent.getYearManufacture());
+
+            //Optional<Regulador> reguladorCurrentOptional = reguladorService.findById(regulador.getId());
+            //Regulador reguladorCurrent = reguladorCurrentOptional.get();
+            regulador.setCode(regulador.getCode());
+            regulador.setRegion(regulador.getRegion());
+            regulador.setFeeder(regulador.getFeeder());
+            regulador.setBus(regulador.getBus());
+            regulador.setModel(regulador.getModel());
+            regulador.setVoltage(regulador.getVoltage());
+            regulador.seteCurrent(regulador.geteCurrent());
+            regulador.setVoltage(regulador.getlVoltage());
+            regulador.setManufacturer(regulador.getManufacturer());
+            regulador.setYearManufacture(regulador.getYearManufacture());
             Regulador reguladorPersisted = (Regulador) reguladorService.createRegulador(regulador);
             response.setData(reguladorPersisted);
         } catch (Exception exception) {
