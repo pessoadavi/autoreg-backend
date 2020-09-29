@@ -2,8 +2,7 @@ package com.project.autoreg.security.jwt;
 
 import java.io.Serializable;
 
-/*  Classe para implementar a classe de login da ação que depente de três arquivos:
-    um para o usuário, um para retornar a token e o controle de autentcação         */
+/* Classe para implementar a classe de login da ação que depente de três arquivos um para o usuário, um para retornar a token e o controle de autenticação */
 public class JwtAuthenticationRequest implements Serializable {
 
     private static final long serialVersionUID = 1L;

@@ -162,6 +162,9 @@ public class ReguladorController {
             regulador.setVoltage(regulador.getlVoltage());
             regulador.setManufacturer(regulador.getManufacturer());
             regulador.setYearManufacture(regulador.getYearManufacture());
+            regulador.setDateEnergization(regulador.getDateEnergization());
+            regulador.setLastInspetion(regulador.getLastInspetion());
+            regulador.setLastUpdate(regulador.getLastUpdate());
             Regulador reguladorPersisted = (Regulador) reguladorService.createRegulador(regulador);
             response.setData(reguladorPersisted);
         } catch (Exception exception) {

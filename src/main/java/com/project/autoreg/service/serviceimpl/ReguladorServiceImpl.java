@@ -1,4 +1,4 @@
-package com.project.autoreg.service.reguladorserviceimpl;
+package com.project.autoreg.service.serviceimpl;
 
 import java.util.Optional;
 

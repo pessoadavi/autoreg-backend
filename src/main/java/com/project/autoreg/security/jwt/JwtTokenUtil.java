@@ -29,6 +29,7 @@ public class JwtTokenUtil implements Serializable {
     @Value("${jwt.expiration}")
     private Long expiration;
 
+    /* Obter o e-amil que está contido no token */
     public String getUsernameFromToken(String token) {
         String username;
         try {
@@ -40,6 +41,7 @@ public class JwtTokenUtil implements Serializable {
         return username;
     }
 
+    /* Retornar a data de expiração do token  */
     public Date getExpirationDateFromToken(String token) {
         Date expiration;
         try {
@@ -51,6 +53,7 @@ public class JwtTokenUtil implements Serializable {
         return expiration;
     }
 
+    /* Realiza o passe do token para extrair as informções contidas no corpo dele*/
     private Claims getClaimsFromToken(String token) {
         Claims claims;
         try {
@@ -64,11 +67,13 @@ public class JwtTokenUtil implements Serializable {
         return claims;
     }
 
+    /* Verifica se o token está expirado ou não */
     private Boolean isTokenExpired(String token) {
         final Date expiration = getExpirationDateFromToken(token);
         return expiration.before(new Date());
     }
 
+    /* Gera o token */
     public String generateToken(UserDetails userDetails) {
         Map<String, Object> claims = new HashMap<>();
 
@@ -80,6 +85,7 @@ public class JwtTokenUtil implements Serializable {
         return doGenerateToken(claims);
     }
 
+    /* Método auxiliar para gerar o token */
     private String doGenerateToken(Map<String, Object> claims) {
         final Date createdDate = (Date) claims.get(CLAIM_KEY_CREATED);
         final Date expirationDate = new Date(createdDate.getTime() + expiration * 1000);
@@ -90,10 +96,12 @@ public class JwtTokenUtil implements Serializable {
                 .compact();
     }
 
+    /* Verifica de o token pode ser atualizado */
     public Boolean canTokenBeRefreshed(String token) {
         return (!isTokenExpired(token));
     }
 
+    /* Atualiza o token */
     public String refreshToken(String token) {
         String refreshedToken;
         try {
@@ -106,6 +114,7 @@ public class JwtTokenUtil implements Serializable {
         return refreshedToken;
     }
 
+    /* Verifica se o token está válido */
     public Boolean validateToken(String token, UserDetails userDetails) {
         JwtUser user = (JwtUser) userDetails;
         final String username = getUsernameFromToken(token);

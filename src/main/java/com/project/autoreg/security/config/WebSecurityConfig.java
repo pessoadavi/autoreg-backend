@@ -21,6 +21,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 
 
 
+
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
@@ -76,9 +77,3 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     
 }
-
-/*  @Bean
-	public AuthenticationManager customAuthenticationManager() throws Exception {
-	return authenticationManager();
-    } 
-*/

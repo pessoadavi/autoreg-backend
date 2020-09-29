@@ -15,7 +15,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
 import org.springframework.web.filter.OncePerRequestFilter;
 
-// Classe para fazer o filtro para verificr o acesso de cada requisição. Se existe um header de http e token válido autorizando o acesso // 
+// Classe para fazer o filtro para verificar o acesso de cada requisição. Se existe um header de http e token válidos autorizando o acesso // 
 public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
 
     @Autowired

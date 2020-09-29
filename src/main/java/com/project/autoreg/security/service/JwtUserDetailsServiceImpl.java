@@ -10,10 +10,9 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-
+/* Serviço para manipular a interface do userDetail */ 
 @Service
 public class JwtUserDetailsServiceImpl implements UserDetailsService{
-// Serviço para manipular a interface do userDetail//     
 
     @Autowired
     private UserService userService;

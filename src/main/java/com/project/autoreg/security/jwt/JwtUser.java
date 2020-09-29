@@ -7,6 +7,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+/* Usuário que implementa a interface o UserDetails que controlará quem está autenticado no sistema */
 public class JwtUser implements UserDetails {
 
     private static final long serialVersionUID = 1L;

@@ -24,7 +24,7 @@ public class JwtUserFactory {
                 mapToGrantedAuthorities(user.getProfile())
         );
     }
-// Método que converte o perfil do usuário par o formato utilizado no spring security //
+// Método que converte o perfil do usuário para o formato utilizado no spring security //
     private static List<GrantedAuthority> mapToGrantedAuthorities(ProfileEnum profileEnum) {
             List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>(); 
             authorities.add(new SimpleGrantedAuthority(profileEnum.toString())); 

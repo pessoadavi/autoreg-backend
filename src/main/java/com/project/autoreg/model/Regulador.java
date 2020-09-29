@@ -7,6 +7,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
+import java.sql.Date;
 
 @Table
 @Entity /* gera uma tabela no DB a partir da classe */
@@ -42,15 +43,16 @@ public class Regulador implements Serializable {
     @NotEmpty
     private String lVoltage; /* nível de tensão */
 
+    @NotEmpty
     private String manufacturer; /* fabricante */
 
     private String yearManufacture; /* ano de fabricação */
-/*
-	private Date dateEnergization; /* data de energização */
-/*
-	private Date lastInspetion; /* data da última inspeção */
- /*   
-	private Date lastUpdate; /* data da última atualização */
+
+	private String dateEnergization; /* data de energização */
+
+	private String lastInspetion; /* data da última inspeção */
+    
+	private String lastUpdate; /* data da última atualização */
 
     public Long getId() {
         return id;
@@ -139,32 +141,31 @@ public class Regulador implements Serializable {
     public void setYearManufacture(String yearManufacture) {
         this.yearManufacture = yearManufacture;
     }
-/*
-	public Date getDateEnergization() {
-		return dateEnergization;
-	}
 
-	public void setDateEnergization(Date dateEnergization) {
-		this.dateEnergization = dateEnergization;
-	}
+    public String getDateEnergization() {
+        return dateEnergization;
+    }
 
-	public Date getLastInspetion() {
-		return lastInspetion;
-	}
+    public void setDateEnergization(String dateEnergization) {
+        this.dateEnergization = dateEnergization;
+    }
 
-	public void setLastInspetion(Date lastInspetion) {
-		this.lastInspetion = lastInspetion;
-	}
+    public String getLastInspetion() {
+        return lastInspetion;
+    }
 
-	public Date getLastUpdate() {
-		return lastUpdate;
-	}
+    public void setLastInspetion(String lastInspetion) {
+        this.lastInspetion = lastInspetion;
+    }
 
-	public void setLastUpdate(Date lastUpdate) {
-		this.lastUpdate = lastUpdate;
-	}
+    public String getLastUpdate() {
+        return lastUpdate;
+    }
 
-*/
+    public void setLastUpdate(String lastUpdate) {
+        this.lastUpdate = lastUpdate;
+    }
+
 }
 
 
