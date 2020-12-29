@@ -7,7 +7,6 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
-import java.sql.Date;
 
 @Table
 @Entity /* gera uma tabela no DB a partir da classe */

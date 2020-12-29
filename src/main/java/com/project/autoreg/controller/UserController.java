@@ -122,14 +122,6 @@ public class UserController {
             user.setEmail(user.getEmail());
             user.setPassword(passEnconder.encode(user.getPassword()));
             user.setProfile(user.getProfile());
-
-            //Optional<User> userCurrentOptional = userService.findById(user.getId());
-            //User userCurrent = userCurrentOptional.get();
-            //user.setEmail(userCurrent.getEmail());
-            //user.setPassword(userCurrent.getPassword());
-            //user.setPassword(passEnconder.encode(userCurrent.getPassword()));
-            //user.setProfile(userCurrent.getProfile());
-
             User userPersisted = (User) userService.createUser(user);
             response.setData(userPersisted);
         } catch (Exception exception) {

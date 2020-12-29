@@ -58,16 +58,6 @@ public class ReguladorController {
         return ResponseEntity.ok(response);
     } 
 
-    /* teste 
-    @GetMapping()
-    public ResponseEntity<Response<List<Regulador>>>listAll2(HttpServletRequest request) {
-        Response<List<Regulador>> response = new Response<List<Regulador>>();
-        List<Regulador> regulador = null;
-        regulador = reguladorService.findAll2();
-        response.setData(regulador);
-        return ResponseEntity.ok(response);
-    }*/
-
     /* Metodo para filtrar um equipamento por algum parametro */
     @GetMapping(value = "/{page}/{count}/{code}/{region}/{feeder}/{bus}")
     public ResponseEntity<Response<Page<Regulador>>>findByParameters(HttpServletRequest request,
@@ -101,7 +91,6 @@ public class ReguladorController {
                 return ResponseEntity.badRequest().body(response);
             }
             Regulador reguladorPersisted = (Regulador) reguladorService.createRegulador(regulador);
-            //regulador = reguladorService.createRegulador(regulador);
             response.setData(reguladorPersisted);
         
         } catch(DuplicateKeyException duplicateKeyException)   {
@@ -150,8 +139,6 @@ public class ReguladorController {
                 return ResponseEntity.badRequest().body(response);
             }
 
-            //Optional<Regulador> reguladorCurrentOptional = reguladorService.findById(regulador.getId());
-            //Regulador reguladorCurrent = reguladorCurrentOptional.get();
             regulador.setCode(regulador.getCode());
             regulador.setRegion(regulador.getRegion());
             regulador.setFeeder(regulador.getFeeder());
